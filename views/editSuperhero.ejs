@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Superhéroe</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
+            padding: 30px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editar Superhéroe</h1>
+    <form action="/api/heroes/actualizar/<%= superheroeaEditar._id %>?_method=PUT" method="post">
+    
+        <label>Nombre del Superhéroe:</label>
+        <input type="text" name="nombreSuperHeroe" required value="<%= superheroeaEditar.nombreSuperHeroe %>">
+    
+        <label>Nombre Real:</label>
+        <input type="text" name="nombreReal" required value="<%= superheroeaEditar.nombreReal %>">
+    
+        <label>Edad:</label>
+        <input type="number" name="edad" min="0" required value="<%= superheroeaEditar.edad %>">
+    
+        <label>Planeta de origen:</label>
+        <input type="text" name="planetaOrigen" required value="<%= superheroeaEditar.planetaOrigen %>">
+    
+        <label>Debilidad (separadas por coma):</label>
+        <input type="text" name="debilidad" value="<%= superheroeaEditar.debilidad.join(', ') %>">
+    
+        <label>Poderes (separados por coma):</label>
+        <input type="text" name="poderes" value="<%= superheroeaEditar.poderes.join(', ') %>">
+    
+        <label>Aliados (separados por coma):</label>
+        <input type="text" name="aliados" value="<%= superheroeaEditar.aliados.join(', ') %>">
+    
+        <label>Enemigos (separados por coma):</label>
+        <input type="text" name="enemigos" value="<%= superheroeaEditar.enemigos.join(', ') %>">
+    
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>
